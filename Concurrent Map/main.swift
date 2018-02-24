@@ -85,7 +85,7 @@ final class ThreadSafe<A> {
 
 extension Array {
     func concurrentMap<B>(_ transform: @escaping (Element) -> B) -> [B] {
-        let result = ThreadSafe(Array<B?>(repeating: nil, count: urls.count))
+        let result = ThreadSafe(Array<B?>(repeating: nil, count: count))
         DispatchQueue.concurrentPerform(iterations: count) { idx in
             let element = self[idx]
             let transformed = transform(element)
