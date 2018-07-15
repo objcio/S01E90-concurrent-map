@@ -60,7 +60,10 @@ final class Parser: NSObject, XMLParserDelegate {
     return result
 }
 
-let base = "/Users/chris/Dropbox (eidhof.nl)/swift talk/to-be-finished/Concurrency/gpx/"
+var path = #file.components(separatedBy: "/")
+path.removeLast(2)
+path.append("/gpx")
+let base = path.joined(separator: "/")
 let currentDirectory = try! FileManager.default.contentsOfDirectory(atPath: base)
 
 let urls = currentDirectory.filter { $0.hasSuffix(".gpx") }.map { URL(fileURLWithPath: base).appendingPathComponent($0)}
